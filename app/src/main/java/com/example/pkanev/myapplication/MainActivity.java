@@ -3,14 +3,15 @@ package com.example.pkanev.myapplication;
 import android.app.Application;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
 import com.tns.RuntimeHelper;
+
+import org.apache.commons.io.IOUtils;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
-import org.apache.commons.io.IOUtils;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         RuntimeHelper rHelper = new RuntimeHelper(app);
         rHelper.initRuntime();
 
-/*        try {
+        try {
             InputStream in = getAssets().open("app/testScript.js");
 
             File file = File.createTempFile("temp", "script");
@@ -36,6 +37,6 @@ public class MainActivity extends AppCompatActivity {
             System.out.println(res.toString());
         } catch (IOException e) {
             e.printStackTrace();
-        }*/
+        }
     }
 }
