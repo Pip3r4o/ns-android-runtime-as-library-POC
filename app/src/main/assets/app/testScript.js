@@ -1,8 +1,18 @@
 (function() {
- __log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ WOOOOOOOOOOOOOOOOOOHOOOOOOOOOOOOOOOOO ~~~~~~~~~~~~~~~~~~~")
- // console is not recognized - console.log("Moooooooo")
+    // bootstrap modules
+    require("application");
 
- var result = require("simplemodule").myLog("pesho");
+    try {
+     console.log("from console.log()");
+    } catch (e) {
+        __log("crashed during console.log");
+    }
 
- return result;
-})()
+     var result = require("simplemodule").myLog("12");
+
+     console.log("result from myLog -> " + result);
+
+     var five = new java.lang.Integer(5);
+
+     return five;
+})();

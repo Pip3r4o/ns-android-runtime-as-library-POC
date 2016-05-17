@@ -45,9 +45,6 @@ public class RuntimeHelper
 	
 	public void initRuntime()
 	{
-
-		Log.d("~~~1~~~", "Before System.loadLibrary NativeScript");
-
 		System.loadLibrary("NativeScript");
 		
 		Logger logger = new LogcatLogger(true, app);
@@ -68,7 +65,7 @@ public class RuntimeHelper
 			String appName = app.getPackageName();
 			File rootDir = new File(app.getApplicationInfo().dataDir);
 			File appDir = app.getFilesDir();
-			
+
 			try
 			{
 				appDir = appDir.getCanonicalFile();
@@ -95,8 +92,6 @@ public class RuntimeHelper
 			Log.d("~~~1~~~", "Before new Runtime");
 			this.runtime = new Runtime(config);
 
-			Log.d("~~~1~~~", "runtime after new Runtime() -> " + this.runtime != null ? "NOT NULL" : "NULL");
-
 			exHandler.setRuntime(this.runtime);
 			
 			if (NativeScriptSyncService.isSyncEnabled(this.app))
@@ -116,18 +111,16 @@ public class RuntimeHelper
 			
 			this.runtime.init();
 
-			Log.d("~~~1~~~", "After runtime.init() -> " + this.runtime != null ? "NOT NULL" : "NULL");
+			File file = new File(appDir, "app/internal/ts_helpers.js");
 
-			// runtime.runScript(new File(appDir, "internal/ts_helpers.js"));
+			runtime.runScript(file);
 			// Runtime.initInstance(this.app);
 			// runtime.run();
-
-			Log.d("~~~1~~~", "runtime at the end of initRuntime RuntimeHelper is " + this.runtime != null ? "NOT NULL" : "NULL");
 		}
 	}
 
 	public Object runScript(File jsFile) {
-		Log.d("~~~2~~~", "runtime inside RuntimeHelper is " + this.runtime != null ? "NOT NULL" : "NULL");
+		Log.d("~~~2~~~", "runtime inside RuntimeHelper");
 		return this.runtime.runScript(jsFile);
 	}
 	

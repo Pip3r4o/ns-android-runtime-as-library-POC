@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             InputStream in = getAssets().open("app/testScript.js");
 
-            File file = File.createTempFile("temp", "script");
+            File file = File.createTempFile("testScript.js", "script");
             file.deleteOnExit();
             FileOutputStream out = new FileOutputStream(file);
             IOUtils.copy(in, out);
@@ -38,5 +38,6 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 }

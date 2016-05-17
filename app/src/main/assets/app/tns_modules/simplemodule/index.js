@@ -2,13 +2,7 @@ var summer = require('../simplesubmodule')
 
 exports.myLog = function(s)
 {
-	if (arguments.length == 1)
-	{
-//		__log("1+1=" + summer.add(1, 1))
-//
-//		__log("global is working" + global)
-	}
-//	__log(s.toString());
+    console.log("Inside tns_modules/simplemodule");
 
-	return s;
+	return s + summer.add(5, 42);
 }
